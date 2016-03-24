@@ -19,7 +19,7 @@ INSTANCE_ID=${RANDOM}
 INSTANCE_NAME=archbuilder${INSTANCE_ID}
 ZONE_NAME=us-central1-f
 MACHINE_TYPE=n1-standard-2
-GIT_SOURCE_URI=https://github.com/GoogleCloudPlatform/compute-archlinux-image-builder.git
+GIT_SOURCE_URI=https://github.com/simoleone/compute-archlinux-image-builder.git
 SCRIPT_PARAMS="$*"
 
 function GcloudNotConfiguredHelp() {
@@ -46,7 +46,7 @@ function PrintHelp() {
 function DeployVm() {
   echo "Creating Instance, ${INSTANCE_NAME}"
   gcloud compute instances create ${INSTANCE_NAME} \
-    --image ubuntu-14-10 \
+    --image ubuntu-14-04 \
     --machine-type ${MACHINE_TYPE} \
     --zone ${ZONE_NAME} \
     --metadata-from-file startup-script=gcevm-script-build-arch.sh \
